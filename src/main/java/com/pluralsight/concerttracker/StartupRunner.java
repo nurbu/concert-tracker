@@ -311,6 +311,17 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void findVenueByMinCapacity() {
+        System.out.println("Enter Venue Min Capacity: ");
+        int capacity = scanner.nextInt();
+        scanner.nextLine();
+        List<Venue> venues = concertService.findVenuesByMinCapacity(capacity);
+        if (venues.isEmpty()) {
+            System.out.println("No Venues found");
+            return;
+        }
+        for (Venue venue : venues) {
+            System.out.println(venue);
+        }
     }
 
 

@@ -104,6 +104,10 @@ public class ConcertService {
         return venueRepository.findByNameContaining(name);
     }
 
+    public List<Venue> findVenuesByMinCapacity(int capacity) {
+        return venueRepository.findByCapacityGreaterThanEqual(capacity);
+    }
+
     public Venue addVenue(Venue venue) {
         if (venue.getCapacity() < 0) {
             throw new IllegalArgumentException("Venue capacity can't be negative.");
