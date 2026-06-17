@@ -132,12 +132,36 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void updateAConcertTicketPrice() {
+        System.out.println("Enter Concert ID: ");
+        long concertID = scanner.nextLong();
+        scanner.nextLine();
+        System.out.println("Enter new ticket price: ");
+        double ticketPrice = scanner.nextDouble();
+        scanner.nextLine();
+
+        concertService.updateConcertPrice(concertID, ticketPrice);
+        System.out.println("Ticket Price has been updated");
     }
 
     private void updateAConcertTicketSold() {
+        System.out.println("Enter Concert ID: ");
+        long concertID = scanner.nextLong();
+        scanner.nextLine();
+        System.out.println("Enter new ticket sold count: ");
+        int ticketsSold = scanner.nextInt();
+        scanner.nextLine();
+
+        concertService.updateConcertTicketsSold(concertID, ticketsSold);
+        System.out.println("Ticket Sold has been updated");
     }
 
     private void deleteAConcert() {
+        System.out.println("Enter Concert ID: ");
+        long concertID = scanner.nextLong();
+        scanner.nextLine();
+
+        concertService.deleteConcert(concertID);
+        System.out.println("Concert has been deleted");
     }
 
     private void listAllConcerts() {
