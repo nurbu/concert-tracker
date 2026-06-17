@@ -1,0 +1,57 @@
+package com.pluralsight.concerttracker;
+
+import com.pluralsight.concerttracker.models.Artist;
+import com.pluralsight.concerttracker.models.Concert;
+import com.pluralsight.concerttracker.models.Promoter;
+import com.pluralsight.concerttracker.models.Venue;
+import com.pluralsight.concerttracker.service.ConcertService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+
+import java.util.Scanner;
+
+public class StartupRunner implements CommandLineRunner {
+
+
+    private final ConcertService concertService;
+    private final Scanner scanner = new Scanner(System.in);
+
+    @Autowired
+    public StartupRunner(ConcertService concertService) {
+        this.concertService = concertService;
+    }
+
+    @Override
+    public void run(String... args) {
+        seedData();
+    }
+
+    private void seedData() {
+        if (!concertService.findAllConcerts().isEmpty()) {
+            return;
+        }
+        Venue venue = concertService.addVenue(new Venue("Barclays Center", "Brooklyn", 19000));
+        Venue pc = concertService.addVenue(new Venue("Prudential Center", "Newark", 18000));
+        Venue msg = concertService.addVenue(new Venue("Madison Square Garden", "New York", 20000));
+
+        Artist mj = concertService.addArtist(new Artist("Michael Jackson", "Pop"));
+        Artist d = concertService.addArtist(new Artist("Drake", "Hip-hop"));
+        Artist btr = concertService.addArtist(new Artist("Big Time Rush", "Pop"));
+
+        Promoter ln = concertService.addPromoter(new Promoter("Live Nation Entertainment"));
+        Promoter aegP = concertService.addPromoter(new Promoter("AEG Presents"));
+
+        concertService.addConcert(new Concert(2024, 89.99, 15000, mj, venue, ln));
+        concertService.addConcert(new Concert(2024, 75.50, 12000, d, pc, aegP));
+        concertService.addConcert(new Concert(2025, 65.00, 18500, btr, msg, ln));
+        concertService.addConcert(new Concert(2023, 95.00, 17000, mj, msg, aegP));
+        concertService.addConcert(new Concert(2025, 55.25, 14000, d, venue, ln));
+        concertService.addConcert(new Concert(2024, 70.00, 16000, btr, pc, aegP));
+        concertService.addConcert(new Concert(2023, 80.00, 19000, mj, venue, ln));
+        concertService.addConcert(new Concert(2025, 60.00, 13000, d, msg, aegP));
+        concertService.addConcert(new Concert(2024, 99.99, 18000, btr, msg, ln));
+        concertService.addConcert(new Concert(2023, 72.50, 15500, mj, pc, aegP));
+        concertService.addConcert(new Concert(2025, 68.00, 17500, d, msg, ln));
+        concertService.addConcert(new Concert(2024, 50.00, 16500, btr, venue, aegP));
+    }
+}
