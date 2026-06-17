@@ -178,9 +178,64 @@ public class StartupRunner implements CommandLineRunner {
 
     // Venue
     private void venueScreen() {
+        boolean running = true;
+        while (running) {
+            System.out.println("Venues Screen\n");
+            System.out.println("1: Add a Venue");
+            System.out.println("2: View all Venues");
+            System.out.println("3: Update a Venue's capacity");
+            System.out.println("4: Delete a Venue");
+            System.out.println("5: View a Venue by city");
+            System.out.println("6: View a Venue by name");
+            System.out.println("7: Find venues by min capacity");
+            System.out.println("0: Quit");
+
+            System.out.println("Enter choice(0-7): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            try {
+                switch (choice) {
+                    case 1 -> addAVenue();
+                    case 2 -> viewAllVenues();
+                    case 3 -> updateAVenueCapacity();
+                    case 4 -> deleteAVenue();
+                    case 5 -> viewAVenueByCity();
+                    case 6 -> viewAVenueByName();
+                    case 7 -> findVenueByMinCapacity();
+                    case 0 -> running = false;
+                    default -> System.out.println("Invalid choice");
+                }
+            } catch (NotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     // Artist
+    
+    private void addAVenue() {
+    }
+
+    private void viewAllVenues() {
+    }
+
+    private void updateAVenueCapacity() {
+    }
+
+    private void deleteAVenue() {
+    }
+
+    private void viewAVenueByCity() {
+    }
+
+    private void viewAVenueByName() {
+    }
+
+    private void findVenueByMinCapacity() {
+    }
+
+
     private void artistScreen() {
     }
 
