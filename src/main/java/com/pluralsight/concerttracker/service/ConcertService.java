@@ -30,6 +30,27 @@ public class ConcertService {
 
     }
 
+    // Concert
+    
+    public List<Concert> findAllConcerts() {
+        return concertRepository.findAll();
+    }
+
+    public Concert addConcert(Concert concert) {
+        return concertRepository.save(concert);
+    }
+
+    // Artist
+    public List<Artist> findAllArtists() {
+        return artistRepository.findAll();
+    }
+
+    public Artist addArtist(Artist artist) {
+        return artistRepository.save(artist);
+    }
+
+    // Venue
+
     public List<Venue> findAllVenues() {
         return venueRepository.findAll();
     }
@@ -38,13 +59,7 @@ public class ConcertService {
         return venueRepository.save(venue);
     }
 
-    public List<Artist> findAllArtists() {
-        return artistRepository.findAll();
-    }
-
-    public Artist addArtist(Artist artist) {
-        return artistRepository.save(artist);
-    }
+    // Promoter
 
     public List<Promoter> findAllPromoters() {
         return promoterRepository.findAll();
@@ -54,11 +69,5 @@ public class ConcertService {
         return promoterRepository.save(promoter);
     }
 
-    public List<Concert> findAllConcerts() {
-        return concertRepository.findAll();
-    }
 
-    public Concert addConcert(Concert concert) {
-        return concertRepository.save(concert);
-    }
 }
