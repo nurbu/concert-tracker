@@ -97,6 +97,10 @@ public class ConcertService {
     }
 
     public Venue addVenue(Venue venue) {
+        if (venue.getCapacity() < 0) {
+            throw new IllegalArgumentException("Venue capacity can't be negative.");
+        }
+
         return venueRepository.save(venue);
     }
 

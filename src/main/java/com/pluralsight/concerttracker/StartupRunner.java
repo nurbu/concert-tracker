@@ -107,16 +107,55 @@ public class StartupRunner implements CommandLineRunner {
         long promoterId = scanner.nextLong();
         scanner.nextLine();
         Promoter promoter = concertService.findPromoterByID(promoterId);
+        boolean running = true;
+        int concertYear = 0;
+        while (running) {
+            System.out.println("Enter the Concert Year: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("Enter a Proper Year after 2000");
+                continue;
+            }
+            concertYear = scanner.nextInt();
+            scanner.nextLine();
+            if (concertYear < 2000) {
+                System.out.println("Invalid Year");
+                continue;
+            }
+            running = false;
+        }
+        running = true;
+        double ticketPrice = 0;
+        while (running) {
+            System.out.println("Enter Concert Ticket Price: ");
+            if (!scanner.hasNextDouble()) {
+                System.out.println("Enter a Number");
+                continue;
+            }
+            ticketPrice = scanner.nextDouble();
+            scanner.nextLine();
+            if (ticketPrice < 0) {
+                System.out.println("Put a Ticket Price greater than 0");
+                continue;
+            }
+            running = false;
+        }
+        running = true;
+        int ticketsSold = 0;
+        while (running) {
+            System.out.println("Enter Concert Tickets Sold: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("Enter a Number");
+                continue;
+            }
+            ticketsSold = scanner.nextInt();
+            scanner.nextLine();
+            if (ticketsSold < 0) {
+                System.out.println("Enter ticket sales greater than 0");
+                continue;
+            }
+            running = false;
+        }
 
-        System.out.println("Enter the Concert Year: ");
-        int concertYear = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter Concert Ticket Price: ");
-        double ticketPrice = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter Concert Tickets Sold: ");
-        int ticketsSold = scanner.nextInt();
-        scanner.nextLine();
 
         concertService.addConcert(new Concert(concertYear, ticketPrice, ticketsSold, artist, venue, promoter));
         System.out.println("Concert has been added");
@@ -215,6 +254,16 @@ public class StartupRunner implements CommandLineRunner {
     // Artist
 
     private void addAVenue() {
+        System.out.println("Enter Venue Name: ");
+        String venueName = scanner.nextLine();
+        System.out.println("Enter Venue City: ");
+        String city = scanner.nextLine();
+        System.out.println("Enter Venue Capacity: ");
+        int capacity = scanner.nextInt();
+        scanner.nextLine();
+
+        concertService.addVenue(new Venue(venueName, city, capacity));
+        System.out.println("Venue has been added");
     }
 
     private void viewAllVenues() {
