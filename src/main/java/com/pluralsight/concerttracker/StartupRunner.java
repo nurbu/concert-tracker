@@ -7,9 +7,12 @@ import com.pluralsight.concerttracker.models.Venue;
 import com.pluralsight.concerttracker.service.ConcertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class StartupRunner implements CommandLineRunner {
 
 
@@ -24,6 +27,30 @@ public class StartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         seedData();
+
+        boolean running = true;
+        while (running) {
+            System.out.println("1: List all concerts");
+            System.out.println("0: Quit");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 1 -> listAllConcerts();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    private void listAllConcerts() {
+        List<Concert> concerts = concertService.findAllConcerts();
+        if (concerts.isEmpty()) {
+            System.out.println("No concerts found");
+            return;
+        }
+        for (Concert concert : concerts) {
+            System.out.println(concert);
+        }
     }
 
     private void seedData() {

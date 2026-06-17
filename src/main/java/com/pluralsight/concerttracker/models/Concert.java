@@ -89,4 +89,9 @@ public class Concert {
     public void setPromoter(Promoter promoter) {
         this.promoter = promoter;
     }
+
+    @Override
+    public String toString() {
+        return venue.getName() + ": " + artist.getName() + " " + concertYear + " $" + ticketPrice + " ticketsSold: " + ticketsSold;
+    }
 }
