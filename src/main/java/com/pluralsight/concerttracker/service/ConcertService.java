@@ -78,6 +78,10 @@ public class ConcertService {
         return artistRepository.findAll();
     }
 
+    public Artist findArtistById(long id) {
+        return artistRepository.findById(id).orElseThrow(() -> new NotFoundException("artist", id));
+    }
+
     public Artist addArtist(Artist artist) {
         return artistRepository.save(artist);
     }
@@ -88,6 +92,10 @@ public class ConcertService {
         return venueRepository.findAll();
     }
 
+    public Venue findVenueById(long id) {
+        return venueRepository.findById(id).orElseThrow(() -> new NotFoundException("venue", id));
+    }
+
     public Venue addVenue(Venue venue) {
         return venueRepository.save(venue);
     }
@@ -96,6 +104,10 @@ public class ConcertService {
 
     public List<Promoter> findAllPromoters() {
         return promoterRepository.findAll();
+    }
+
+    public Promoter findPromoterById(long id) {
+        return promoterRepository.findById(id).orElseThrow(() -> new NotFoundException("promoter", id));
     }
 
     public Promoter addPromoter(Promoter promoter) {
