@@ -31,9 +31,42 @@ public class ConcertService {
     }
 
     // Concert
-    
+
     public List<Concert> findAllConcerts() {
         return concertRepository.findAll();
+    }
+
+    public Concert findConcertById(Long id) {
+        return concertRepository.findById(id).orElseThrow(() -> new NotFoundException("Concert", id));
+    }
+
+    public Concert updateConcertPrice(long id, double newPrice) {
+        if (newPrice < 0) {
+            throw new IllegalArgumentException("Ticket price can't be negative.");
+        }
+        Concert concert = findConcertById(id);
+        concert.setTicketPrice(newPrice);
+        return concertRepository.save(concert);
+    }
+
+    public Concert updateConcertTicketsSold(long id, int newTicketsSold) {
+        Concert concert = findConcertById(id);
+        if (newTicketsSold < 0) {
+            throw new IllegalArgumentException("Tickets sold can't be negative.");
+        }
+        if (newTicketsSold > concert.getVenue().getCapacity()) {
+            throw new IllegalArgumentException("Tickets sold can't be more than capacity of "
+                    + concert.getVenue().getCapacity() + ".");
+        }
+        concert.setTicketsSold(newTicketsSold);
+        return concertRepository.save(concert);
+    }
+
+    public void deleteConcert(long id) {
+        if (!concertRepository.existsById(id)) {
+            throw new NotFoundException("concert", id);
+        }
+        concertRepository.deleteById(id);
     }
 
     public Concert addConcert(Concert concert) {
