@@ -92,6 +92,6 @@ public class Concert {
 
     @Override
     public String toString() {
-        return venue.getName() + ": " + artist.getName() + " " + concertYear + " $" + ticketPrice + " ticketsSold: " + ticketsSold;
+        return "Venue: " + venue.getName() + " Artist: " + artist.getName() + " Concert year: " + concertYear + "Ticket Price: $" + ticketPrice + " Tickets Sold: " + ticketsSold;
     }
 }

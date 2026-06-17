@@ -213,11 +213,20 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     // Artist
-    
+
     private void addAVenue() {
     }
 
     private void viewAllVenues() {
+
+        List<Venue> venues = concertService.findAllVenues();
+        if (venues.isEmpty()) {
+            System.out.println("No Venues found");
+            return;
+        }
+        for (Venue venue : venues) {
+            System.out.println(venue);
+        }
     }
 
     private void updateAVenueCapacity() {

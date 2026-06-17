@@ -56,5 +56,10 @@ public class Venue {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + " Name: " + name + " City: " + city + " Capacity: " + capacity;
+    }
 }
 
