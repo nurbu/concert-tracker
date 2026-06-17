@@ -27,19 +27,43 @@ public class StartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         seedData();
+        homeScreen();
 
+    }
+
+    private void homeScreen() {
         boolean running = true;
         while (running) {
-            System.out.println("1: List all concerts");
+            System.out.println("Home Screen\n");
+            System.out.println("1: Manage Concerts");
+            System.out.println("2: Manage Venues");
+            System.out.println("3: Manage Artists");
+            System.out.println("4: Manage Promoters");
             System.out.println("0: Quit");
+            System.out.println("Enter choice(0-4): ");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 1 -> listAllConcerts();
+                case 1 -> concertScreen();
+                case 2 -> venueScreen();
+                case 3 -> artistScreen();
+                case 4 -> promoterScreen();
                 case 0 -> running = false;
                 default -> System.out.println("Invalid choice");
             }
         }
+    }
+
+    private void concertScreen() {
+    }
+
+    private void venueScreen() {
+    }
+
+    private void artistScreen() {
+    }
+
+    private void promoterScreen() {
     }
 
     private void listAllConcerts() {
