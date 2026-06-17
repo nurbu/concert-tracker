@@ -55,15 +55,44 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void concertScreen() {
+        boolean running = true;
+        while (running) {
+            System.out.println("Concert Screen\n");
+            System.out.println("1: Add a Concert");
+            System.out.println("2: View a Concert");
+            System.out.println("3: Update a Concert's ticket price");
+            System.out.println("4: Update a Concert's tickets sold count");
+            System.out.println("5: Delete a Concert");
+            System.out.println("0: Quit");
+            System.out.println("Enter choice(0-5): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> addAConcert();
+                case 2 -> viewAConcert();
+                case 3 -> updateAConcertTicketPrice();
+                case 4 -> updateAConcertTicketSold();
+                case 5 -> deleteAConcert();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid choice");
+            }
+        }
     }
 
-    private void venueScreen() {
+    private void addAConcert() {
     }
 
-    private void artistScreen() {
+    private void viewAConcert() {
     }
 
-    private void promoterScreen() {
+    private void updateAConcertTicketPrice() {
+    }
+
+    private void updateAConcertTicketSold() {
+    }
+
+    private void deleteAConcert() {
     }
 
     private void listAllConcerts() {
@@ -76,6 +105,22 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println(concert);
         }
     }
+
+
+    // Venue
+    private void venueScreen() {
+    }
+
+    // Artist
+    private void artistScreen() {
+    }
+
+    // Promoter
+    private void promoterScreen() {
+    }
+
+
+    // Seed Data
 
     private void seedData() {
         if (!concertService.findAllConcerts().isEmpty()) {
