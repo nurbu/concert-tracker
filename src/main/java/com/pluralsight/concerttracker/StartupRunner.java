@@ -5,6 +5,7 @@ import com.pluralsight.concerttracker.models.Concert;
 import com.pluralsight.concerttracker.models.Promoter;
 import com.pluralsight.concerttracker.models.Venue;
 import com.pluralsight.concerttracker.service.ConcertService;
+import com.pluralsight.concerttracker.service.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -68,14 +69,18 @@ public class StartupRunner implements CommandLineRunner {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
-            switch (choice) {
-                case 1 -> addAConcert();
-                case 2 -> viewAConcert();
-                case 3 -> updateAConcertTicketPrice();
-                case 4 -> updateAConcertTicketSold();
-                case 5 -> deleteAConcert();
-                case 0 -> running = false;
-                default -> System.out.println("Invalid choice");
+            try {
+                switch (choice) {
+                    case 1 -> addAConcert();
+                    case 2 -> viewAConcert();
+                    case 3 -> updateAConcertTicketPrice();
+                    case 4 -> updateAConcertTicketSold();
+                    case 5 -> deleteAConcert();
+                    case 0 -> running = false;
+                    default -> System.out.println("Invalid choice");
+                }
+            } catch (NotFoundException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -84,6 +89,12 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void viewAConcert() {
+        System.out.println("Enter Concert ID: ");
+        long concertID = scanner.nextInt();
+        scanner.nextLine();
+
+        Concert concert = concertService.findConcertById(concertID);
+        System.out.println("Concert: " + concert);
     }
 
     private void updateAConcertTicketPrice() {
