@@ -285,9 +285,29 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void viewAVenueByCity() {
+        System.out.println("Enter Venue City: ");
+        String city = scanner.nextLine();
+        List<Venue> venues = concertService.findVenuesByCity(city);
+        if (venues.isEmpty()) {
+            System.out.println("No Venues found in city: " + city);
+            return;
+        }
+        for (Venue venue : venues) {
+            System.out.println(venue);
+        }
     }
 
     private void viewAVenueByName() {
+        System.out.println("Enter Venue Name(): ");
+        String venueName = scanner.nextLine();
+        List<Venue> venues = concertService.findVenuesByName(venueName);
+        if (venues.isEmpty()) {
+            System.out.println("No Venues found in venue name: " + venueName);
+            return;
+        }
+        for (Venue venue : venues) {
+            System.out.println(venue);
+        }
     }
 
     private void findVenueByMinCapacity() {

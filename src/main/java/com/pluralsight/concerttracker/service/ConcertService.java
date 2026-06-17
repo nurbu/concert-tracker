@@ -96,6 +96,14 @@ public class ConcertService {
         return venueRepository.findById(id).orElseThrow(() -> new NotFoundException("venue", id));
     }
 
+    public List<Venue> findVenuesByCity(String city) {
+        return venueRepository.findByCity(city);
+    }
+
+    public List<Venue> findVenuesByName(String name) {
+        return venueRepository.findByNameContaining(name);
+    }
+
     public Venue addVenue(Venue venue) {
         if (venue.getCapacity() < 0) {
             throw new IllegalArgumentException("Venue capacity can't be negative.");
