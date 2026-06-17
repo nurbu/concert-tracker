@@ -86,6 +86,40 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void addAConcert() {
+
+        System.out.println("Artists available");
+        concertService.findAllArtists().forEach(artist -> System.out.println(artist.getId() + ": " + artist.getName()));
+        System.out.println("Enter Artist ID: ");
+        long artistId = scanner.nextLong();
+        scanner.nextLine();
+        Artist artist = concertService.findArtistByID(artistId);
+
+        System.out.println("Venues available");
+        concertService.findAllVenues().forEach(venue -> System.out.println(venue.getId() + ": " + venue.getName()));
+        System.out.println("Enter Artist ID: ");
+        long venueId = scanner.nextLong();
+        scanner.nextLine();
+        Venue venue = concertService.findVenueByID(venueId);
+
+        System.out.println("Promoter available");
+        concertService.findAllPromoters().forEach(promoter -> System.out.println(promoter.getId() + ": " + promoter.getName()));
+        System.out.println("Enter Promoter ID: ");
+        long promoterId = scanner.nextLong();
+        scanner.nextLine();
+        Promoter promoter = concertService.findPromoterByID(promoterId);
+
+        System.out.println("Enter the Concert Year: ");
+        int concertYear = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter Concert Ticket Price: ");
+        double ticketPrice = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter Concert Tickets Sold: ");
+        int ticketsSold = scanner.nextInt();
+        scanner.nextLine();
+
+        concertService.addConcert(new Concert(concertYear, ticketPrice, ticketsSold, artist, venue, promoter));
+        System.out.println("Concert has been added");
     }
 
     private void viewAConcert() {
