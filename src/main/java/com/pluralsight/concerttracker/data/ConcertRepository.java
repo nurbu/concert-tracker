@@ -5,6 +5,7 @@ import com.pluralsight.concerttracker.models.Concert;
 import com.pluralsight.concerttracker.models.Promoter;
 import com.pluralsight.concerttracker.models.Venue;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -25,4 +26,10 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
     List<Concert> findByTicketPriceLessThanEqual(double ticketPrice);
 
     List<Concert> findConcertByPriceRange(double minPrice, double maxPrice);
+
+    @Query("SELECT c FROM Concert c WHERE c.venue.city = :city")
+    List<Concert> findByCity(String city);
+
+    @Query("SELECT c FROM Concert c WHERE c.ticketPrice <= :maxPrice AND c.concertYear >= :earliestYear")
+    List<Concert> findByMaxPriceAndMinYear(double maxPrice, int earliestYear);
 }

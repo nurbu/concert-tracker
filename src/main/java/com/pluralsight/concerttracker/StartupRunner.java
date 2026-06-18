@@ -132,6 +132,17 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void filterByCity() {
+        System.out.println("Enter City Name: ");
+        String cityName = scanner.nextLine();
+
+        List<Concert> concerts = concertService.searchConcertByCity(cityName);
+        if (concerts.isEmpty()) {
+            System.out.println("Concert not found for city: " + cityName);
+            return;
+        }
+        for (Concert concert : concerts) {
+            System.out.println(concert);
+        }
     }
 
     private void filterByMaxPrice() {
@@ -168,6 +179,21 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void filterByMaxPriceAndEarliestYear() {
+        System.out.println("Enter Max Ticket Price: ");
+        double maxPrice = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println("Enter Earliest Year: ");
+        int earliestYear = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Concert> concerts = concertService.searchConcertByMaxPriceAndEarliestYear(maxPrice, earliestYear);
+        if (concerts.isEmpty()) {
+            System.out.println("Concert not found for max price: " + maxPrice + " and earliest year: " + earliestYear);
+        }
+        for (Concert concert : concerts) {
+            System.out.println(concert);
+        }
+        
     }
 
     private void concertScreen() {

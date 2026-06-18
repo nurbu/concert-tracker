@@ -93,6 +93,14 @@ public class ConcertService {
         return concertRepository.findConcertByPriceRange(minTicketPrice, maxTicketPrice);
     }
 
+    public List<Concert> searchConcertByCity(String city) {
+        return concertRepository.findByCity(city);
+    }
+
+    public List<Concert> searchConcertByMaxPriceAndEarliestYear(double maxPrice, int earliestYear) {
+        return concertRepository.findByMaxPriceAndMinYear(maxPrice, earliestYear);
+    }
+
     // Artist
     public List<Artist> findAllArtists() {
         return artistRepository.findAll();
