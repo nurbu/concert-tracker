@@ -46,4 +46,9 @@ public class Artist {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    @Override
+    public String toString() {
+        return "Artist{" + "id=" + id + ", name=" + name + ", genre=" + genre + '}';
+    }
 }

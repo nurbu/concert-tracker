@@ -376,6 +376,14 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void viewAllArtists() {
+        List<Artist> artists = concertService.findAllArtists();
+        if (artists.isEmpty()) {
+            System.out.println("No Artists found");
+            return;
+        }
+        for (Artist artist : artists) {
+            System.out.println(artist);
+        }
     }
 
     private void updateArtistGenre() {
