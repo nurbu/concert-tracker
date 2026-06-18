@@ -41,6 +41,7 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println("3: Manage Artists");
             System.out.println("4: Manage Promoters");
             System.out.println("5: Search Concerts");
+            System.out.println("6: Manage Reports");
             System.out.println("0: Quit");
             System.out.println("Enter choice(0-5): ");
             int choice = scanner.nextInt();
@@ -51,10 +52,31 @@ public class StartupRunner implements CommandLineRunner {
                 case 3 -> artistScreen();
                 case 4 -> promoterScreen();
                 case 5 -> searchScreen();
+                case 6 -> reportScreen();
                 case 0 -> running = false;
                 default -> System.out.println("Invalid choice");
             }
         }
+    }
+
+    private void reportScreen() {
+        boolean running = true;
+        while (running) {
+            System.out.println("Report Screen\n");
+            System.out.println("1: Revenue per venue");
+            System.out.println("0: Quit");
+            System.out.println("Enter choice(0-1): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 1 -> revenuePerVenue();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    private void revenuePerVenue() {
     }
 
     private void searchScreen() {
@@ -193,7 +215,7 @@ public class StartupRunner implements CommandLineRunner {
         for (Concert concert : concerts) {
             System.out.println(concert);
         }
-        
+
     }
 
     private void concertScreen() {
