@@ -90,7 +90,7 @@ public class ConcertService {
     }
 
     public List<Concert> searchConcertByTicketPriceRange(double minTicketPrice, double maxTicketPrice) {
-        return concertRepository.findConcertByPriceRange(minTicketPrice, maxTicketPrice);
+        return concertRepository.findConcertByTicketPriceBetween(minTicketPrice, maxTicketPrice);
     }
 
     public List<Concert> searchConcertByCity(String city) {
@@ -111,6 +111,10 @@ public class ConcertService {
 
     public List<Object[]> busiestArtist() {
         return concertRepository.busiestArtist();
+    }
+
+    public List<Object[]> averagePriceByYear() {
+        return concertRepository.averagePriceByYear();
     }
 
     // Artist

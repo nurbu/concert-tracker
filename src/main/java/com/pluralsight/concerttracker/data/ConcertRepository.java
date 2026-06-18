@@ -25,7 +25,7 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
 
     List<Concert> findByTicketPriceLessThanEqual(double ticketPrice);
 
-    List<Concert> findConcertByPriceRange(double minPrice, double maxPrice);
+    List<Concert> findConcertByTicketPriceBetween(double minPrice, double maxPrice);
 
     @Query("SELECT c FROM Concert c WHERE c.venue.city = :city")
     List<Concert> findByCity(String city);
@@ -41,4 +41,7 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
 
     @Query("SELECT c.artist.name, COUNT(c) FROM Concert c GROUP BY c.artist.name ORDER BY COUNT(c) DESC")
     List<Object[]> busiestArtist();
+
+    @Query("SELECT c.concertYear, AVG(c.ticketPrice) FROM Concert c GROUP BY c.concertYear ORDER BY c.concertYear")
+    List<Object[]> averagePriceByYear();
 }

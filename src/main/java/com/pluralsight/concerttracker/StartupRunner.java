@@ -65,6 +65,7 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println("Report Screen\n");
             System.out.println("1: Revenue per venue");
             System.out.println("2: Busiest Venue and Artist");
+            System.out.println("3: Average Ticket Price by Year");
             System.out.println("0: Quit");
             System.out.println("Enter choice(0-1): ");
             int choice = scanner.nextInt();
@@ -72,9 +73,24 @@ public class StartupRunner implements CommandLineRunner {
             switch (choice) {
                 case 1 -> revenuePerVenue();
                 case 2 -> busiestVenueAndArtist();
+                case 3 -> averagePriceByYear();
                 case 0 -> running = false;
                 default -> System.out.println("Invalid choice");
             }
+        }
+    }
+
+    private void averagePriceByYear() {
+        List<Object[]> average = concertService.averagePriceByYear();
+
+        if (average.isEmpty()) {
+            System.out.println("There are no available concerts");
+            return;
+        }
+        for (Object[] row : average) {
+            int year = (Integer) row[0];
+            double ticketPrice = (Double) row[1];
+            System.out.println("Concert " + year + ": " + ticketPrice);
         }
     }
 
