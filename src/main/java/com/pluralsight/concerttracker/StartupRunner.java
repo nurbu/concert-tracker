@@ -279,6 +279,15 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void updateAVenueCapacity() {
+        System.out.println("Enter Venue Id: ");
+        long venueID = scanner.nextLong();
+        scanner.nextLine();
+        System.out.println("Enter new capacity: ");
+        int capacity = scanner.nextInt();
+        scanner.nextLine();
+
+        concertService.updateVenueCapacity(venueID, capacity);
+        System.out.println("Venue has been updated");
     }
 
     private void deleteAVenue() {

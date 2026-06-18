@@ -116,6 +116,22 @@ public class ConcertService {
         return venueRepository.save(venue);
     }
 
+    public Venue updateVenueCapacity(long id, int newCapacity) {
+        if (newCapacity < 0) {
+            throw new IllegalArgumentException("Capacity can't be negative.");
+        }
+        Venue venue = findVenueByID(id);
+        List<Concert> concertsAtVenue = concertRepository.findByVenue(venue);
+        for (Concert concert : concertsAtVenue) {
+            if (concert.getTicketsSold() > newCapacity) {
+                throw new IllegalArgumentException("Tickets sold can't be more than " + newCapacity + ".");
+            }
+        }
+        venue.setCapacity(newCapacity);
+        return venueRepository.save(venue);
+
+    }
+
     // Promoter
 
     public List<Promoter> findAllPromoters() {
