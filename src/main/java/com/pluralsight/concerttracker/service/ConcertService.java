@@ -89,6 +89,10 @@ public class ConcertService {
         return concertRepository.findByTicketPriceLessThanEqual(maxTicketPrice);
     }
 
+    public List<Concert> searchConcertByTicketPriceRange(double minTicketPrice, double maxTicketPrice) {
+        return concertRepository.findConcertByPriceRange(minTicketPrice, maxTicketPrice);
+    }
+
     // Artist
     public List<Artist> findAllArtists() {
         return artistRepository.findAll();

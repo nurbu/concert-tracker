@@ -151,6 +151,20 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void filterByPriceRange() {
+        System.out.println("Enter Min Ticket Price: ");
+        double minPrice = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println("Enter Max Ticket Price: ");
+        double maxPrice = scanner.nextDouble();
+        scanner.nextLine();
+        List<Concert> concerts = concertService.searchConcertByTicketPriceRange(minPrice, maxPrice);
+        if (concerts.isEmpty()) {
+            System.out.println("Concert not found for price range: " + minPrice + " to " + maxPrice);
+            return;
+        }
+        for (Concert concert : concerts) {
+            System.out.println(concert);
+        }
     }
 
     private void filterByMaxPriceAndEarliestYear() {

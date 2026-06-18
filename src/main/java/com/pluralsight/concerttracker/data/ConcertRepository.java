@@ -23,4 +23,6 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
     List<Concert> findByVenue_NameContaining(String venueName);
 
     List<Concert> findByTicketPriceLessThanEqual(double ticketPrice);
+
+    List<Concert> findConcertByPriceRange(double minPrice, double maxPrice);
 }
