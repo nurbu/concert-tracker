@@ -21,4 +21,6 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
     List<Concert> findByArtist_NameContaining(String artistName);
 
     List<Concert> findByVenue_NameContaining(String venueName);
+
+    List<Concert> findByTicketPriceLessThanEqual(double ticketPrice);
 }
