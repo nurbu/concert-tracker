@@ -291,6 +291,12 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void deleteAVenue() {
+        System.out.println("Enter Venue Id: ");
+        long venueID = scanner.nextLong();
+        scanner.nextLine();
+
+        concertService.deleteVenue(venueID);
+        System.out.println("Venue has been deleted");
     }
 
     private void viewAVenueByCity() {

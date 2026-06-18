@@ -132,6 +132,18 @@ public class ConcertService {
 
     }
 
+    public void deleteVenue(long id) {
+        if (!venueRepository.existsById(id)) {
+            throw new NotFoundException("venue", id);
+        }
+        Venue venue = findVenueByID(id);
+        List<Concert> concertsAtVenue = concertRepository.findByVenue(venue);
+        if (!concertsAtVenue.isEmpty()) {
+            throw new IllegalStateException("Venue can't be deleted, concerts still booked at venue");
+        }
+        venueRepository.deleteById(id);
+    }
+
     // Promoter
 
     public List<Promoter> findAllPromoters() {
