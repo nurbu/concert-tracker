@@ -394,10 +394,23 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void updateArtistGenre() {
+        System.out.println("Enter Artist ID: ");
+        long artistId = scanner.nextLong();
+        scanner.nextLine();
+        System.out.println("Enter new Artist Genre: ");
+        String newGenre = scanner.nextLine();
 
+        concertService.updateArtistGenre(artistId, newGenre);
+        System.out.println("Artist has been updated");
     }
 
     private void deleteAnArtist() {
+        System.out.println("Enter Artist ID: ");
+        long artistId = scanner.nextLong();
+        scanner.nextLine();
+        
+        concertService.deleteArtist(artistId);
+        System.out.println("Artist has been deleted");
     }
 
     private void findArtistByGenre() {

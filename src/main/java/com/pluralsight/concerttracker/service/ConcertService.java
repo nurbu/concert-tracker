@@ -94,6 +94,20 @@ public class ConcertService {
         return artistRepository.findByNameContaining(name);
     }
 
+    public Artist updateArtistGenre(long id, String genre) {
+        Artist artist = findArtistByID(id);
+        artist.setGenre(genre);
+        return artistRepository.save(artist);
+    }
+
+    public void deleteArtist(long id) {
+        Artist artist = artistRepository.findById(id).orElseThrow(() -> new NotFoundException("artist", id));
+        List<Concert> concerts = concertRepository.findByArtist(artist);
+        if (!concerts.isEmpty()) {
+            throw new IllegalArgumentException("Artist still booked can't be deleted.");
+        }
+        artistRepository.deleteById(id);
+    }
     // Venue
 
     public List<Venue> findAllVenues() {
