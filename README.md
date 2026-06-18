@@ -37,29 +37,28 @@ Follow these steps to get your application running within IntelliJ IDEA:
 ## Demo
 
 - Concert
--
 
-[Concert-ezgif.com-video-to-gif-converter.mov](src/main/java/com/pluralsight/concerttracker/gifs/Concert-ezgif.com-video-to-gif-converter.mov)
+![concert.gif](src/main/java/com/pluralsight/concerttracker/gif/concert.gif)
 
 - Artist
 
-[Artist-ezgif.com-video-to-gif-converter.mov](src/main/java/com/pluralsight/concerttracker/gifs/Artist-ezgif.com-video-to-gif-converter.mov)
+![artist.gif](src/main/java/com/pluralsight/concerttracker/gif/artist.gif)
 
 - Venue
 
-[Venue-ezgif.com-video-to-gif-converter.mov](src/main/java/com/pluralsight/concerttracker/gifs/Venue-ezgif.com-video-to-gif-converter.mov)
+![ven.gif](src/main/java/com/pluralsight/concerttracker/gif/ven.gif)
 
 - Promoter
 
-[Promoter-ezgif.com-video-to-gif-converter.mov](src/main/java/com/pluralsight/concerttracker/gifs/Promoter-ezgif.com-video-to-gif-converter.mov)
+![Promoter.gif](src/main/java/com/pluralsight/concerttracker/gif/Promoter.gif)
 
 - Filters
 
-[Filters-ezgif.com-video-to-gif-converter.mov](src/main/java/com/pluralsight/concerttracker/gifs/Filters-ezgif.com-video-to-gif-converter.mov)
+![search.gif](src/main/java/com/pluralsight/concerttracker/gif/search.gif)
 
 - Reports
 
-[Reports-ezgif.com-video-to-gif-converter.mov](src/main/java/com/pluralsight/concerttracker/gifs/Reports-ezgif.com-video-to-gif-converter.mov)
+![Report.gif](src/main/java/com/pluralsight/concerttracker/gif/Report.gif)
 
 ## Future Work
 
