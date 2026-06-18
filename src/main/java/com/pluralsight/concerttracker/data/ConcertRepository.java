@@ -35,4 +35,10 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
 
     @Query("SELECT c.venue.name, SUM(c.ticketPrice * c.ticketsSold) FROM Concert c GROUP BY c.venue.name")
     List<Object[]> getRevenuePerVenue();
+
+    @Query("SELECT c.venue.name, COUNT(c) FROM Concert c GROUP BY c.venue.name ORDER BY COUNT(c) DESC")
+    List<Object[]> busiestVenue();
+
+    @Query("SELECT c.artist.name, COUNT(c) FROM Concert c GROUP BY c.artist.name ORDER BY COUNT(c) DESC")
+    List<Object[]> busiestArtist();
 }

@@ -105,6 +105,14 @@ public class ConcertService {
         return concertRepository.getRevenuePerVenue();
     }
 
+    public List<Object[]> busiestVenue() {
+        return concertRepository.busiestVenue();
+    }
+
+    public List<Object[]> busiestArtist() {
+        return concertRepository.busiestArtist();
+    }
+
     // Artist
     public List<Artist> findAllArtists() {
         return artistRepository.findAll();

@@ -64,16 +64,34 @@ public class StartupRunner implements CommandLineRunner {
         while (running) {
             System.out.println("Report Screen\n");
             System.out.println("1: Revenue per venue");
+            System.out.println("2: Busiest Venue and Artist");
             System.out.println("0: Quit");
             System.out.println("Enter choice(0-1): ");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
                 case 1 -> revenuePerVenue();
+                case 2 -> busiestVenueAndArtist();
                 case 0 -> running = false;
                 default -> System.out.println("Invalid choice");
             }
         }
+    }
+
+    private void busiestVenueAndArtist() {
+        List<Object[]> venue = concertService.busiestVenue();
+        List<Object[]> artist = concertService.busiestArtist();
+
+        if (venue.isEmpty() || artist.isEmpty()) {
+            System.out.println("Venue or Artist are empty");
+            return;
+        }
+        String busiestVenue = (String) venue.get(0)[0];
+        long venueConcerts = (long) venue.get(0)[1];
+        String busiestArtist = (String) artist.get(0)[0];
+        long artistConcerts = (long) artist.get(0)[1];
+        System.out.println("Venue: " + busiestVenue + "Total Concerts: " + venueConcerts);
+        System.out.println("Busiest Artist: " + busiestArtist + " Total Concerts: " + artistConcerts);
     }
 
     private void revenuePerVenue() {
