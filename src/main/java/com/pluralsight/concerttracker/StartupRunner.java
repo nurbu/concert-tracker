@@ -40,8 +40,9 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println("2: Manage Venues");
             System.out.println("3: Manage Artists");
             System.out.println("4: Manage Promoters");
+            System.out.println("5: Search Concerts");
             System.out.println("0: Quit");
-            System.out.println("Enter choice(0-4): ");
+            System.out.println("Enter choice(0-5): ");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -49,10 +50,62 @@ public class StartupRunner implements CommandLineRunner {
                 case 2 -> venueScreen();
                 case 3 -> artistScreen();
                 case 4 -> promoterScreen();
+                case 5 -> searchScreen();
                 case 0 -> running = false;
                 default -> System.out.println("Invalid choice");
             }
         }
+    }
+
+    private void searchScreen() {
+        boolean running = true;
+        while (running) {
+            System.out.println("Search Concerts Screen\n");
+            System.out.println("Search By:");
+            System.out.println("1: Year");
+            System.out.println("2: Artist");
+            System.out.println("3: Venues");
+            System.out.println("4: City");
+            System.out.println("5: Max Price");
+            System.out.println("6: Price Range");
+            System.out.println("7: Max price and earliest year");
+            System.out.println("0: Quit");
+            System.out.println("Enter choice(0-7): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 1 -> filterByYear();
+                case 2 -> filterByArtist();
+                case 3 -> filterByVenue();
+                case 4 -> filterByCity();
+                case 5 -> filterByMaxPrice();
+                case 6 -> filterByPriceRange();
+                case 7 -> filterByMaxPriceAndEarliestYear();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    private void filterByYear() {
+    }
+
+    private void filterByArtist() {
+    }
+
+    private void filterByVenue() {
+    }
+
+    private void filterByCity() {
+    }
+
+    private void filterByMaxPrice() {
+    }
+
+    private void filterByPriceRange() {
+    }
+
+    private void filterByMaxPriceAndEarliestYear() {
     }
 
     private void concertScreen() {
@@ -487,7 +540,7 @@ public class StartupRunner implements CommandLineRunner {
         System.out.println("Enter Promoter ID: ");
         long promoterId = scanner.nextLong();
         scanner.nextLine();
-        
+
         concertService.deletePromoter(promoterId);
         System.out.println("Promoter has been deleted");
     }
