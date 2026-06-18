@@ -251,8 +251,6 @@ public class StartupRunner implements CommandLineRunner {
         }
     }
 
-    // Artist
-
     private void addAVenue() {
         System.out.println("Enter Venue Name: ");
         String venueName = scanner.nextLine();
@@ -339,8 +337,57 @@ public class StartupRunner implements CommandLineRunner {
         }
     }
 
+    // Artist
 
     private void artistScreen() {
+
+        boolean running = true;
+        while (running) {
+            System.out.println("Artist Screen\n");
+            System.out.println("1: Add Artist");
+            System.out.println("2: View All Artists");
+            System.out.println("3: Update Artist Genre");
+            System.out.println("4: Delete Artist");
+            System.out.println("5: Find Artist By Genre");
+            System.out.println("6: Find Artist By Name");
+            System.out.println("0: Exit");
+            System.out.println("Enter choice(0-6): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            try {
+                switch (choice) {
+                    case 1 -> addAnArtist();
+                    case 2 -> viewAllArtists();
+                    case 3 -> updateArtistGenre();
+                    case 4 -> deleteAnArtist();
+                    case 5 -> findArtistByGenre();
+                    case 6 -> findArtistByName();
+                    case 0 -> running = false;
+                    default -> System.out.println("Invalid choice");
+                }
+            } catch (NotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void addAnArtist() {
+    }
+
+    private void viewAllArtists() {
+    }
+
+    private void updateArtistGenre() {
+    }
+
+    private void deleteAnArtist() {
+    }
+
+    private void findArtistByGenre() {
+    }
+
+    private void findArtistByName() {
     }
 
     // Promoter
