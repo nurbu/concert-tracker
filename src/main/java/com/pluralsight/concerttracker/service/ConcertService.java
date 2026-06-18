@@ -77,6 +77,10 @@ public class ConcertService {
         return concertRepository.findByConcertYear(year);
     }
 
+    public List<Concert> searchConcertByArtistName(String artistName) {
+        return concertRepository.findByArtist_NameContaining(artistName);
+    }
+
     // Artist
     public List<Artist> findAllArtists() {
         return artistRepository.findAll();

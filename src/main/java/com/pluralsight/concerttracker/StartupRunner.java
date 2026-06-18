@@ -103,6 +103,18 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void filterByArtist() {
+        System.out.println("Enter Artist Name: ");
+        String artistName = scanner.nextLine();
+
+        List<Concert> concerts = concertService.searchConcertByArtistName(artistName);
+        if (concerts.isEmpty()) {
+            System.out.println("Concert not found for artist: " + artistName);
+            return;
+        }
+        for (Concert concert : concerts) {
+            System.out.println(concert);
+        }
+        
     }
 
     private void filterByVenue() {
