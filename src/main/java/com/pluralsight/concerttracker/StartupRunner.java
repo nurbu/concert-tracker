@@ -43,7 +43,7 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println("5: Search Concerts");
             System.out.println("6: Manage Reports");
             System.out.println("0: Quit");
-            System.out.println("Enter choice(0-5): ");
+            System.out.println("Enter choice(0-6): ");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -68,7 +68,7 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println("3: Average Ticket Price by Year");
             System.out.println("4: Capacity Used Per Concert");
             System.out.println("0: Quit");
-            System.out.println("Enter choice(0-1): ");
+            System.out.println("Enter choice(0-4): ");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -91,7 +91,7 @@ public class StartupRunner implements CommandLineRunner {
         for (Concert concert : concerts) {
             double usage = ((double) concert.getTicketsSold() / concert.getVenue().getCapacity()) * 100;
             String soldOut = usage >= 100 ? "Sold out" : "";
-            System.out.printf("%s%s Usage: %.1f%%n", concert, soldOut, usage);
+            System.out.printf("%s%s Usage: %.1f", concert, soldOut, usage);
             System.out.println();
         }
     }
