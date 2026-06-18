@@ -66,6 +66,7 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println("1: Revenue per venue");
             System.out.println("2: Busiest Venue and Artist");
             System.out.println("3: Average Ticket Price by Year");
+            System.out.println("4: Capacity Used Per Concert");
             System.out.println("0: Quit");
             System.out.println("Enter choice(0-1): ");
             int choice = scanner.nextInt();
@@ -74,9 +75,24 @@ public class StartupRunner implements CommandLineRunner {
                 case 1 -> revenuePerVenue();
                 case 2 -> busiestVenueAndArtist();
                 case 3 -> averagePriceByYear();
+                case 4 -> capacityReport();
                 case 0 -> running = false;
                 default -> System.out.println("Invalid choice");
             }
+        }
+    }
+
+    private void capacityReport() {
+        List<Concert> concerts = concertService.findAllConcerts();
+        if (concerts.isEmpty()) {
+            System.out.println("No Concert found");
+            return;
+        }
+        for (Concert concert : concerts) {
+            double usage = ((double) concert.getTicketsSold() / concert.getVenue().getCapacity()) * 100;
+            String soldOut = usage >= 100 ? "Sold out" : "";
+            System.out.printf("%s%s Usage: %.1f%%n", concert, soldOut, usage);
+            System.out.println();
         }
     }
 
