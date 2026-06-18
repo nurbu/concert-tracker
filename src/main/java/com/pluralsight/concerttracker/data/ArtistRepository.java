@@ -9,7 +9,7 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
 
     List<Artist> findByGenre(String genre);
 
-    List<Artist> findByNameContaining(String name);
+    List<Artist> findByNameContainingIgnoreCase(String name);
 
 
 }

@@ -465,6 +465,11 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void addAPromoter() {
+        System.out.println("Enter Promoter Name: ");
+        String name = scanner.nextLine();
+
+        concertService.addPromoter(new Promoter(name));
+        System.out.println("Promoter has been added");
     }
 
     private void viewAllPromoters() {
@@ -482,6 +487,16 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void findAPromoterByName() {
+        System.out.println("Enter Promoter Name: ");
+        String name = scanner.nextLine();
+        List<Promoter> promoters = concertService.findAllPromotersByName(name);
+        if (promoters.isEmpty()) {
+            System.out.println("No Promoters found");
+            return;
+        }
+        for (Promoter promoter : promoters) {
+            System.out.println(promoter);
+        }
     }
 
 

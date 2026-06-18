@@ -91,7 +91,7 @@ public class ConcertService {
     }
 
     public List<Artist> findArtistByName(String name) {
-        return artistRepository.findByNameContaining(name);
+        return artistRepository.findByNameContainingIgnoreCase(name);
     }
 
     public Artist updateArtistGenre(long id, String genre) {
@@ -123,7 +123,7 @@ public class ConcertService {
     }
 
     public List<Venue> findVenuesByName(String name) {
-        return venueRepository.findByNameContaining(name);
+        return venueRepository.findByNameContainingIgnoreCase(name);
     }
 
     public List<Venue> findVenuesByMinCapacity(int capacity) {
@@ -174,6 +174,10 @@ public class ConcertService {
 
     public Promoter findPromoterByID(long id) {
         return promoterRepository.findById(id).orElseThrow(() -> new NotFoundException("promoter", id));
+    }
+
+    public List<Promoter> findAllPromotersByName(String name) {
+        return promoterRepository.findByNameContainingIgnoreCase(name);
     }
 
     public Promoter addPromoter(Promoter promoter) {
