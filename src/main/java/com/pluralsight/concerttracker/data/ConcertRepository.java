@@ -15,4 +15,6 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
     List<Concert> findByArtist(Artist artist);
 
     List<Concert> findByPromoter(Promoter promoter);
+
+    List<Concert> findByConcertYear(int year);
 }

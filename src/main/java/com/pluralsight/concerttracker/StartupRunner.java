@@ -88,6 +88,18 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void filterByYear() {
+        System.out.println("Enter Year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Concert> concerts = concertService.searchConcertByYear(year);
+        if (concerts.isEmpty()) {
+            System.out.println("Concert not found");
+            return;
+        }
+        for (Concert concert : concerts) {
+            System.out.println(concert);
+        }
     }
 
     private void filterByArtist() {
