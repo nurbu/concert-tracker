@@ -86,6 +86,14 @@ public class ConcertService {
         return artistRepository.save(artist);
     }
 
+    public List<Artist> findAllArtistsByGenre(String genre) {
+        return artistRepository.findByGenre(genre);
+    }
+
+    public List<Artist> findArtistByName(String name) {
+        return artistRepository.findByNameContaining(name);
+    }
+
     // Venue
 
     public List<Venue> findAllVenues() {
