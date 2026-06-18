@@ -36,4 +36,9 @@ public class Promoter {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Promoter{" + "id=" + id + ", name=" + name + '}';
+    }
 }

@@ -468,6 +468,14 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void viewAllPromoters() {
+        List<Promoter> promoters = concertService.findAllPromoters();
+        if (promoters.isEmpty()) {
+            System.out.println("No Promoters found");
+            return;
+        }
+        for (Promoter promoter : promoters) {
+            System.out.println(promoter);
+        }
     }
 
     private void deleteAPromoter() {
