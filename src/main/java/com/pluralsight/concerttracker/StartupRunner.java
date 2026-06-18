@@ -89,7 +89,7 @@ public class StartupRunner implements CommandLineRunner {
         }
         for (Object[] row : average) {
             int year = (Integer) row[0];
-            double ticketPrice = (Double) row[1];
+            double ticketPrice = ((Double) row[1]).doubleValue();
             System.out.println("Concert " + year + ": " + ticketPrice);
         }
     }
@@ -118,7 +118,7 @@ public class StartupRunner implements CommandLineRunner {
         }
         for (Object[] row : report) {
             String name = (String) row[0];
-            String revenue = (String) row[1];
+            double revenue = ((Number) row[1]).doubleValue();
             System.out.println(name + " $" + revenue);
         }
     }
