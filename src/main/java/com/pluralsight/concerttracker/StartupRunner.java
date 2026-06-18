@@ -373,6 +373,13 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void addAnArtist() {
+        System.out.println("Enter Artist Name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter Artist Genre: ");
+        String genre = scanner.nextLine();
+
+        concertService.addArtist(new Artist(name, genre));
+        System.out.println("Artist has been added");
     }
 
     private void viewAllArtists() {
