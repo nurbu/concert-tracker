@@ -484,6 +484,12 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void deleteAPromoter() {
+        System.out.println("Enter Promoter ID: ");
+        long promoterId = scanner.nextLong();
+        scanner.nextLine();
+        
+        concertService.deletePromoter(promoterId);
+        System.out.println("Promoter has been deleted");
     }
 
     private void findAPromoterByName() {

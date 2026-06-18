@@ -184,4 +184,16 @@ public class ConcertService {
         return promoterRepository.save(promoter);
     }
 
+    public void deletePromoter(long id) {
+        if (!promoterRepository.existsById(id)) {
+            throw new NotFoundException("promoter", id);
+        }
+        Promoter promoter = findPromoterByID(id);
+        List<Concert> concerts = concertRepository.findByPromoter(promoter);
+        if (!concerts.isEmpty()) {
+            throw new IllegalArgumentException("Promoter still booked can't be deleted.");
+        }
+        promoterRepository.deleteById(id);
+    }
+
 }
