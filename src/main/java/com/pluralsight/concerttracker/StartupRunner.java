@@ -408,7 +408,7 @@ public class StartupRunner implements CommandLineRunner {
         System.out.println("Enter Artist ID: ");
         long artistId = scanner.nextLong();
         scanner.nextLine();
-        
+
         concertService.deleteArtist(artistId);
         System.out.println("Artist has been deleted");
     }
@@ -441,6 +441,39 @@ public class StartupRunner implements CommandLineRunner {
 
     // Promoter
     private void promoterScreen() {
+        boolean running = true;
+        while (running) {
+            System.out.println("Promoter Screen\n");
+            System.out.println("1: Add Promoter");
+            System.out.println("2: View All Promoters");
+            System.out.println("3: Delete A Promoter");
+            System.out.println("4: Find A Promoter by name");
+            System.out.println("0: Quit");
+            System.out.println("Enter choice(0-4): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> addAPromoter();
+                case 2 -> viewAllPromoters();
+                case 3 -> deleteAPromoter();
+                case 4 -> findAPromoterByName();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    private void addAPromoter() {
+    }
+
+    private void viewAllPromoters() {
+    }
+
+    private void deleteAPromoter() {
+    }
+
+    private void findAPromoterByName() {
     }
 
 
