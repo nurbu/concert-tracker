@@ -9,6 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * Derived queries for Artist model
+ */
 public interface ConcertRepository extends JpaRepository<Concert, Long> {
 
     List<Concert> findByVenue(Venue venue);
@@ -26,6 +29,11 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
     List<Concert> findByTicketPriceLessThanEqual(double ticketPrice);
 
     List<Concert> findConcertByTicketPriceBetween(double minPrice, double maxPrice);
+
+    /**
+     * Custom JPQL queries
+     * Used for nested queries like grouping and aggregations
+     */
 
     @Query("SELECT c FROM Concert c WHERE c.venue.city = :city")
     List<Concert> findByCity(String city);

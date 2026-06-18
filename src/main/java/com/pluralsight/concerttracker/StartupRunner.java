@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Handles all the startup
+ * Has all the CLI Promot logic
+ */
 @Component
 public class StartupRunner implements CommandLineRunner {
 
@@ -25,12 +29,22 @@ public class StartupRunner implements CommandLineRunner {
         this.concertService = concertService;
     }
 
+    /**
+     * Loads seedData
+     * Go straight into Home Screen
+     *
+     * @param args incoming main method arguments
+     */
     @Override
     public void run(String... args) {
         seedData();
         homeScreen();
 
     }
+
+    /**
+     * Home Screen
+     */
 
     private void homeScreen() {
         boolean running = true;
@@ -59,6 +73,10 @@ public class StartupRunner implements CommandLineRunner {
         }
     }
 
+    /**
+     * Report Screen
+     */
+
     private void reportScreen() {
         boolean running = true;
         while (running) {
@@ -82,6 +100,9 @@ public class StartupRunner implements CommandLineRunner {
         }
     }
 
+    /**
+     * Report functions
+     */
     private void capacityReport() {
         List<Concert> concerts = concertService.findAllConcerts();
         if (concerts.isEmpty()) {
@@ -139,6 +160,10 @@ public class StartupRunner implements CommandLineRunner {
         }
     }
 
+    /**
+     * Search Screen
+     */
+
     private void searchScreen() {
         boolean running = true;
         while (running) {
@@ -168,6 +193,10 @@ public class StartupRunner implements CommandLineRunner {
             }
         }
     }
+
+    /**
+     * Search Functions
+     */
 
     private void filterByYear() {
         System.out.println("Enter Year: ");
@@ -278,6 +307,10 @@ public class StartupRunner implements CommandLineRunner {
 
     }
 
+    /**
+     * Concert Screen
+     */
+
     private void concertScreen() {
         boolean running = true;
         while (running) {
@@ -307,6 +340,10 @@ public class StartupRunner implements CommandLineRunner {
             }
         }
     }
+
+    /**
+     * Concert Functions
+     */
 
     private void addAConcert() {
 
@@ -438,7 +475,10 @@ public class StartupRunner implements CommandLineRunner {
     }
 
 
-    // Venue
+    /**
+     * Venue Screen
+     */
+
     private void venueScreen() {
         boolean running = true;
         while (running) {
@@ -473,6 +513,10 @@ public class StartupRunner implements CommandLineRunner {
             }
         }
     }
+
+    /**
+     * Venue Functions
+     */
 
     private void addAVenue() {
         System.out.println("Enter Venue Name: ");
@@ -560,7 +604,9 @@ public class StartupRunner implements CommandLineRunner {
         }
     }
 
-    // Artist
+    /**
+     * Artist Screen
+     */
 
     private void artistScreen() {
 
@@ -594,6 +640,10 @@ public class StartupRunner implements CommandLineRunner {
             }
         }
     }
+
+    /**
+     * Artist Functions
+     */
 
     private void addAnArtist() {
         System.out.println("Enter Artist Name: ");
@@ -662,7 +712,10 @@ public class StartupRunner implements CommandLineRunner {
         }
     }
 
-    // Promoter
+    /**
+     * Promoter Screen
+     */
+
     private void promoterScreen() {
         boolean running = true;
         while (running) {
@@ -686,6 +739,10 @@ public class StartupRunner implements CommandLineRunner {
             }
         }
     }
+
+    /**
+     * Promoter Functions
+     */
 
     private void addAPromoter() {
         System.out.println("Enter Promoter Name: ");
@@ -729,7 +786,10 @@ public class StartupRunner implements CommandLineRunner {
     }
 
 
-    // Seed Data
+    /**
+     * Seed Data
+     * Loads all the info.
+     */
 
     private void seedData() {
         if (!concertService.findAllConcerts().isEmpty()) {

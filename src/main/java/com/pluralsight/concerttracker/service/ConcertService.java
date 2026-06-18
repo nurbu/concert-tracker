@@ -30,7 +30,11 @@ public class ConcertService {
 
     }
 
-    // Concert
+    /**
+     *
+     * Concerts Functions
+     *
+     */
 
     public List<Concert> findAllConcerts() {
         return concertRepository.findAll();
@@ -117,7 +121,12 @@ public class ConcertService {
         return concertRepository.averagePriceByYear();
     }
 
-    // Artist
+    /**
+     *
+     * Artist Functions
+     *
+     */
+
     public List<Artist> findAllArtists() {
         return artistRepository.findAll();
     }
@@ -152,7 +161,12 @@ public class ConcertService {
         }
         artistRepository.deleteById(id);
     }
-    // Venue
+
+    /**
+     *
+     * Venue Functions
+     *
+     */
 
     public List<Venue> findAllVenues() {
         return venueRepository.findAll();
@@ -210,7 +224,11 @@ public class ConcertService {
         venueRepository.deleteById(id);
     }
 
-    // Promoter
+    /**
+     *
+     * Promoter Functions
+     *
+     */
 
     public List<Promoter> findAllPromoters() {
         return promoterRepository.findAll();

@@ -2,6 +2,9 @@ package com.pluralsight.concerttracker.models;
 
 import jakarta.persistence.*;
 
+/**
+ * Maps to the Concert table in the database
+ */
 @Entity
 public class Concert {
 

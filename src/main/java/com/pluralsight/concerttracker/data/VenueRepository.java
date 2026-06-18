@@ -3,6 +3,9 @@ package com.pluralsight.concerttracker.data;
 import com.pluralsight.concerttracker.models.Venue;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/**
+ * Derived queries for Venue model
+ */
 import java.util.List;
 
 public interface VenueRepository extends JpaRepository<Venue, Long> {
