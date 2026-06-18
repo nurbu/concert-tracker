@@ -77,6 +77,16 @@ public class StartupRunner implements CommandLineRunner {
     }
 
     private void revenuePerVenue() {
+        List<Object[]> report = concertService.revenuePerVenue();
+        if (report.isEmpty()) {
+            System.out.println("There are no Concert entries for this Venue");
+            return;
+        }
+        for (Object[] row : report) {
+            String name = (String) row[0];
+            String revenue = (String) row[1];
+            System.out.println(name + " $" + revenue);
+        }
     }
 
     private void searchScreen() {

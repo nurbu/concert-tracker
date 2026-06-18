@@ -101,6 +101,10 @@ public class ConcertService {
         return concertRepository.findByMaxPriceAndMinYear(maxPrice, earliestYear);
     }
 
+    public List<Object[]> revenuePerVenue() {
+        return concertRepository.getRevenuePerVenue();
+    }
+
     // Artist
     public List<Artist> findAllArtists() {
         return artistRepository.findAll();

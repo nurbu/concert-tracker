@@ -32,4 +32,7 @@ public interface ConcertRepository extends JpaRepository<Concert, Long> {
 
     @Query("SELECT c FROM Concert c WHERE c.ticketPrice <= :maxPrice AND c.concertYear >= :earliestYear")
     List<Concert> findByMaxPriceAndMinYear(double maxPrice, int earliestYear);
+
+    @Query("SELECT c.venue.name, SUM(c.ticketPrice * c.ticketsSold) FROM Concert c GROUP BY c.venue.name")
+    List<Object[]> getRevenuePerVenue();
 }
